@@ -7,7 +7,9 @@
   -webkit-appearance: none;
   appearance: none;
   height: 4px;
-  background: #e2e8f0;
+  width: 100%;
+  display: block;
+  background: #e7e0dc;
   border-radius: 2px;
   outline: none;
   cursor: pointer;
@@ -17,46 +19,50 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #2563eb;
-  border: 2px solid #1d4ed8;
+  background: #A1887F;
+  border: 2px solid #8D6E63;
   cursor: pointer;
 }
-/* Active track colour via gradient trick */
 .slider::-webkit-slider-runnable-track { border-radius: 2px; }
 
+/* ── Slider wrapper — padding prevents thumb clipping at ends ─── */
+.slider-wrap { padding: 0 11px; flex: 1; min-width: 0; }
+
 /* ── Slider row ───────────────────────────────────────────────── */
-.slider-row  { display: flex; align-items: center; gap: 8px; }
-.ctrl-lbl    { font-size: 11px; color: #64748b; width: 40px; flex-shrink: 0; }
-.ctrl-val    { font-size: 11px; color: #64748b; width: 36px; text-align: right; flex-shrink: 0; }
+.slider-row { display: flex; align-items: center; gap: 8px; }
+.ctrl-lbl   { font-size: 11px; color: #5D4037; width: 40px; flex-shrink: 0; }
+.ctrl-val   { font-size: 11px; color: #5D4037; width: 36px; text-align: right; flex-shrink: 0; }
 
 /* ── Snap grid button ─────────────────────────────────────────── */
 .snap-btn {
   position: relative;
-  width: 2.25rem;   /* 36px */
+  width: 2.25rem;
   height: 2.25rem;
   border-radius: 8px;
-  background: #f1f5f9;
+  background: #f1ebe8;
   transition: background 0.12s, transform 0.08s;
 }
 .snap-btn:active { transform: scale(0.9); }
-/* dot indicator */
 .snap-btn::after {
   content: '';
   display: block;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #94a3b8;
+  background: #BCAAA4;
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
 }
-.snap-active                { background: #2563eb !important; }
-.snap-active::after         { background: #fff; }
+.snap-active        { background: #A1887F !important; }
+.snap-active::after { background: #fff; }
 
 /* ── Mode toggle ──────────────────────────────────────────────── */
-.mode-btn        { transition: background 0.15s, color 0.15s; }
-.mode-active     { background: #2563eb; color: #fff !important; }
+.mode-btn    { transition: background 0.15s, color 0.15s; }
+.mode-active { background: #A1887F; color: #fff !important; }
+
+/* ── Canvas: disable native touch scroll so drag works on mobile  */
+#preview-canvas { touch-action: none; }
 
 /* ── Global touch polish ──────────────────────────────────────── */
 * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
