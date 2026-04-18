@@ -1,0 +1,69 @@
+/* ── Safe Areas (iPhone notch / home bar) ─────────────────────── */
+.header-safe { padding-top: max(12px, env(safe-area-inset-top)); }
+.bottom-safe  { padding-bottom: max(0px, env(safe-area-inset-bottom)); }
+
+/* ── Slider ───────────────────────────────────────────────────── */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  width: 100%;
+  display: block;
+  background: #e7e0dc;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #A1887F;
+  border: 2px solid #8D6E63;
+  cursor: pointer;
+}
+.slider::-webkit-slider-runnable-track { border-radius: 2px; }
+
+/* ── Slider wrapper — padding prevents thumb clipping at ends ─── */
+.slider-wrap { padding: 0 11px; flex: 1; min-width: 0; }
+
+/* ── Slider row ───────────────────────────────────────────────── */
+.slider-row { display: flex; align-items: center; gap: 8px; }
+.ctrl-lbl   { font-size: 11px; color: #5D4037; width: 40px; flex-shrink: 0; }
+.ctrl-val   { font-size: 11px; color: #5D4037; width: 36px; text-align: right; flex-shrink: 0; }
+
+/* ── Snap grid button ─────────────────────────────────────────── */
+.snap-btn {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  background: #f1ebe8;
+  transition: background 0.12s, transform 0.08s;
+}
+.snap-btn:active { transform: scale(0.9); }
+.snap-btn::after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #BCAAA4;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.snap-active        { background: #A1887F !important; }
+.snap-active::after { background: #fff; }
+
+/* ── Mode toggle ──────────────────────────────────────────────── */
+.mode-btn    { transition: background 0.15s, color 0.15s; }
+.mode-active { background: #A1887F; color: #fff !important; }
+
+/* ── Canvas: disable native touch scroll so drag works on mobile  */
+#preview-canvas { touch-action: none; }
+
+/* ── Global touch polish ──────────────────────────────────────── */
+* { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+button, span, label { user-select: none; -webkit-user-select: none; }
